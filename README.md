@@ -1,24 +1,20 @@
-# Belle Stays
+# Bella Stays
 
-A simple project for Belle Stays.
+Next.js (App Router) + TypeScript + Tailwind CSS v4 + shadcn/ui.
 
-## Overview
-This repository contains the source code and related files for Belle Stays. It is a starting point for building and extending the project.
+## Scripts
 
-## Getting Started
-1. Clone the repository.
-2. Open the project in your preferred code editor.
-3. Install dependencies if required.
-4. Run the project according to the project instructions.
+```bash
+npm run dev    # start the dev server at http://localhost:3000
+npm run build  # production build
+npm run start  # serve the production build
+npm run lint   # run ESLint
+```
 
-## Project Structure
-- `src/` - Source code
-- `docs/` - Documentation
-- `tests/` - Test files
-- `README.md` - Project overview
+## Adding UI components
 
-## Contributing
-Contributions are welcome. Please open an issue or submit a pull request with your changes.
+```bash
+npx shadcn@latest add button
+```
 
-## License
-This project does not currently include a license file. Please check with the repository owner for licensing details.
+Components are added to `src/components/ui`.
