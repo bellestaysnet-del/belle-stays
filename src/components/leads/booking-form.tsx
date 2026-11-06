@@ -1,7 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { differenceInCalendarDays, format } from "date-fns"
+import { differenceInCalendarDays, format, startOfToday } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { useSyncExternalStore } from "react"
 import { Controller, useForm } from "react-hook-form"
@@ -98,7 +98,9 @@ export function BookingForm({ stay, onDone }: { stay?: string; onDone: () => voi
                   numberOfMonths={isWide ? 2 : 1}
                   selected={field.value}
                   onSelect={(range) => field.onChange(range as BookingInput["dates"])}
-                  disabled={{ before: new Date() }}
+                  // A function, so "today" is read in the browser when the calendar opens,
+                  // not frozen into the page at build time.
+                  disabled={(date) => date < startOfToday()}
                 />
               </PopoverContent>
             </Popover>
