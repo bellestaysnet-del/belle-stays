@@ -16,8 +16,8 @@ export function Hero() {
       {/* Full-bleed photo with the name and headline in front of it */}
       <div className="relative isolate flex min-h-[640px] flex-col items-center justify-center overflow-hidden px-[var(--gutter)] pt-36 pb-20 text-center text-white sm:min-h-[720px] lg:min-h-[860px] lg:pt-44 lg:pb-52">
         <Image
-          src="/images/hero/home-houses-hd.jpg"
-          alt="Modern Belle Stays homes with timber accents under a clear blue sky"
+          src="/images/hero/lodge-patio.jpg"
+          alt="A timber Belle Stays lodge with a covered patio"
           fill
           priority
           sizes="100vw"
@@ -32,7 +32,7 @@ export function Hero() {
           <br />
           <Accent text={hero.title[1]} />
         </p>
-        <a href={site.mapsUrl} target="_blank" rel="noreferrer" className="mt-6 flex items-center gap-2 transition-colors hover:text-copper lg:mt-8">
+        <a href="#booking" className="mt-6 flex items-center gap-2 transition-colors hover:text-copper lg:mt-8">
           <Image src="/icons/location.svg" alt="" width={27} height={28} className="size-5 lg:size-7" />
           {hero.location}
         </a>

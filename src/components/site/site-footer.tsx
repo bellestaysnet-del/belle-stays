@@ -20,11 +20,13 @@ export function SiteFooter() {
                   <a href={`mailto:${site.email}`} className="hover:text-copper">
                     {site.email}
                   </a>
-                  <a href={site.mapsUrl} target="_blank" rel="noreferrer" className="mt-4 block w-fit hover:text-copper">
-                    {site.address[0]}
+                  <span className="mt-4 block text-xs font-bold tracking-wide text-white/60 uppercase">{footer.officeLabel}</span>
+                  <a href={site.officeMapsUrl} target="_blank" rel="noreferrer" className="mt-1 block w-fit hover:text-copper">
+                    {site.officeAddress[0]}
                     <br />
-                    {site.address[1]}
+                    {site.officeAddress[1]}
                   </a>
+                  <span className="mt-1 block text-sm text-white/60">{footer.officeNote}</span>
                 </address>
                 <h2 className="mt-10">Social</h2>
                 <ul className="mt-4 flex gap-2">

@@ -48,17 +48,16 @@ export function SiteHeader() {
       )}
     >
       <a
-        href={site.mapsUrl}
-        target="_blank"
-        rel="noreferrer"
-        aria-label={`Open ${site.address.join(", ")} in Google Maps`}
+        href="#office"
         className={cn(
           "mb-1.5 flex items-center justify-center gap-2 px-4 py-2 text-xs text-white/90 backdrop-blur-[20px] transition-colors duration-500 outline-none hover:text-copper focus-visible:ring-2 focus-visible:ring-copper sm:text-sm",
           scrolled ? "bg-forest/85" : "bg-black/15"
         )}
       >
         <MapPinIcon aria-hidden className="size-4 shrink-0" />
-        <span className="truncate">{site.address.join(", ")}</span>
+        <span className="truncate">
+          <span className="font-medium">Our office:</span> {site.officeAddress.join(", ")}
+        </span>
       </a>
 
       <div

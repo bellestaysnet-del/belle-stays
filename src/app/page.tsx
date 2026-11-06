@@ -1,7 +1,7 @@
 import { Amenities } from "@/components/sections/amenities";
+import { Booking } from "@/components/sections/booking";
 import { Cta } from "@/components/sections/cta";
 import { Features } from "@/components/sections/features";
-import { FeaturedStays } from "@/components/sections/featured-stays";
 import { Hero } from "@/components/sections/hero";
 import { ImageStrip } from "@/components/sections/image-strip";
 import { InteriorGallery } from "@/components/sections/interior-gallery";
@@ -26,12 +26,12 @@ export default function Home() {
         <Included />
         <Features />
         <StayTypes />
-        <FeaturedStays />
+        <Booking />
         <Amenities />
-        <Location />
         <Process />
         <Cta />
         <ImageStrip />
+        <Location />
       </main>
       <SiteFooter />
     </>

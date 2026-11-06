@@ -10,22 +10,24 @@ import {
   WifiIcon,
 } from "lucide-react"
 
-const address = ["2667 NE 205th Avenue", "Fairview, OR 97024"] as const
+// The company's business office. It is NOT a rental property: never show it as a
+// place to stay or link it from booking UI.
+const officeAddress = ["2667 NE 205th Avenue", "Fairview, OR 97024"] as const
 
 export const site = {
   name: "Belle Stays",
   description:
-    "Belle Stays offers comfortable, stylish short-term accommodations in the Portland, Oregon area for vacations, business trips, and weekend getaways.",
+    "Belle Stays is a short-term accommodation and hosting company in the Portland, Oregon area. We prepare, host, and look after comfortable, stylish stays for vacations, business trips, and weekend getaways.",
   email: "info@bellestays.net",
-  address,
-  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address.join(", "))}`,
+  officeAddress,
+  officeMapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(officeAddress.join(", "))}`,
 }
 
 export const nav = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Stays", href: "#stays" },
-  { label: "Amenities", href: "#amenities" },
+  { label: "Booking", href: "#booking" },
   { label: "Contact", href: "#contact" },
 ] as const
 
@@ -40,7 +42,7 @@ export const socials = [
 
 export const hero = {
   title: ["Stylish Stays,", "Made to Feel *Like Home*"],
-  location: "Fairview, Oregon",
+  location: "Portland, Oregon area",
   pitch: "Comfortable, stylish stays for vacations, business trips, and weekend getaways.",
   // Set to a YouTube/Vimeo embed URL to turn the photo card into a video player.
   videoUrl: "",
@@ -69,7 +71,7 @@ export const host = {
 export const intro = {
   eyebrow: "About Belle Stays",
   title: "Welcoming spaces, *attentive service*",
-  body: "We look after every detail, from spotless spaces to quick, friendly help, so you can settle in and enjoy the Portland area like a local.",
+  body: "We host and manage short-term stays around Portland, taking care of cleaning, check-in, and guest support, so you can settle in and enjoy the area like a local.",
 }
 
 export type Hotspot = { x: number; y: number; title: string; text: string }
@@ -125,7 +127,7 @@ export const rooms: {
 ]
 
 export const included = {
-  eyebrow: "The Belle Stays standard",
+  eyebrow: "Our services",
   title: "Every stay, *thoughtfully* prepared",
   body: "From the moment you book to the moment you check out, we take care of the details so you can relax and enjoy your time away.",
   items: [
@@ -164,41 +166,33 @@ export const stayTypes = [
   { name: "Family Homes", option: "Family home", sleeps: "Up to 6 guests", image: "/images/stays/family-home.jpg" },
 ]
 
-export const featuredTitle = "Find the stay that *suits your trip*"
+export type Listing = {
+  name: string // shown on the card and sent with the booking request
+  detail: string // e.g. "Sleeps 4 · 2 beds · 2 baths"
+  price: string // e.g. "From $180 / night" or "Rates on request"
+  image: string
+}
 
-// TODO: confirm names, sizes and rates for your listings
-export const featuredStays = [
-  {
-    name: "The Pearl Studio",
-    type: "Studio",
-    price: "Rates on request",
-    guests: "2 guests",
-    beds: "1 bed",
-    baths: "1 bath",
-    plan: "/images/floorplans/vista.jpg",
-    photo: "/images/floorplans/vista-photo.jpg",
-  },
-  {
-    name: "The Willamette Suite",
-    type: "Apartment",
-    price: "Rates on request",
-    guests: "4 guests",
-    beds: "2 beds",
-    baths: "2 baths",
-    plan: "/images/floorplans/horizon.jpg",
-    photo: "/images/floorplans/horizon-photo.jpg",
-  },
-  {
-    name: "The Rose City Home",
-    type: "Family home",
-    price: "Rates on request",
-    guests: "6 guests",
-    beds: "3 beds",
-    baths: "2.5 baths",
-    plan: "/images/floorplans/panorama.jpg",
-    photo: "/images/strip/grid-01.jpg",
-  },
-]
+// Real rental listings go here. While this is empty, the booking section offers
+// the stay types above instead.
+export const listings: Listing[] = []
+
+export const booking = {
+  eyebrow: "Booking & availability",
+  title: "Check availability for *your dates*",
+  body: "Choose a stay and your dates. We'll confirm availability and rates, usually within a day.",
+  formTitle: "Send a booking request",
+}
+
+// What the booking section lists: real listings when there are any, stay types until then.
+export const bookableStays: Listing[] = listings.length
+  ? listings
+  : stayTypes.map((type) => ({
+      name: type.option,
+      detail: type.sleeps,
+      price: "Rates on request",
+      image: type.image,
+    }))
 
 // TODO: confirm which of these your properties offer
 export const amenities = [
@@ -208,15 +202,15 @@ export const amenities = [
   { eyebrow: "Step outside", title: "Green Spaces *Nearby*", image: "/images/amenities/gardens.jpg", icon: "/icons/amenity-gardens.svg" },
 ]
 
-// Positions from OpenStreetMap. The map frames all of these markers.
-export const location = {
-  building: { name: "Belle Stays", note: address[0], position: [45.5423, -122.4516] as [number, number] },
-  places: [
-    { name: "Gresham Central Transit Center", kind: "MAX & buses", icon: "/icons/map-transit.svg", position: [45.5028, -122.4269] as [number, number] },
-    { name: "Gresham Station", kind: "Shopping", icon: "/icons/map-shopping.svg", position: [45.5111, -122.4425] as [number, number] },
-    { name: "McMenamins Edgefield", kind: "Food & drink", icon: "/icons/map-dining.svg", position: [45.5371, -122.4069] as [number, number] },
-    { name: "Salish Ponds Park", kind: "Park", icon: "/icons/map-park.svg", position: [45.5307, -122.4448] as [number, number] },
-  ],
+// The office map. Position from OpenStreetMap.
+export const office = {
+  eyebrow: "Our office",
+  title: "Where the Belle Stays *team works*",
+  body: "This is our business office, not a place to stay. To find accommodation, see",
+  bodyLink: "Booking & availability",
+  name: "Belle Stays Office",
+  note: "Business office, not a rental",
+  position: [45.5423, -122.4516] as [number, number],
 }
 
 export const journey = {
@@ -257,13 +251,16 @@ export const strip = [
 
 export const footer = {
   about:
-    "Belle Stays offers comfortable, stylish short-term accommodations for vacations, business trips, and weekend getaways. We focus on welcoming spaces and attentive service to help every guest feel at home.",
+    "Belle Stays is a short-term accommodation and hosting company in the Portland, Oregon area. We prepare, host, and look after comfortable, stylish stays for vacations, business trips, and weekend getaways.",
   menu: [
     { label: "Home", href: "#home" },
     { label: "Stays", href: "#stays" },
+    { label: "Booking", href: "#booking" },
     { label: "Amenities", href: "#amenities" },
     { label: "Contact", href: "#contact" },
   ],
+  officeLabel: "Office address",
+  officeNote: "Business office only. Not available to book.",
   copyrightYear: 2026,
   enquiryEyebrow: "Get in touch",
   enquiryTitle:
@@ -276,10 +273,6 @@ export const footer = {
 }
 
 // Choices for the "Stay" field in the booking form
-export const stayOptions = [
-  ...featuredStays.map((stay) => stay.name),
-  ...stayTypes.map((type) => type.option),
-  "Not sure yet",
-]
+export const stayOptions = [...bookableStays.map((stay) => stay.name), "Not sure yet"]
 
 export const guestOptions = ["1", "2", "3", "4", "5", "6", "7", "8+"]
