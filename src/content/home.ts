@@ -17,7 +17,7 @@ const officeAddress = ["2667 NE 205th Avenue", "Fairview, OR 97024"] as const
 export const site = {
   name: "Belle Stays",
   description:
-    "Belle Stays is a short-term accommodation and hosting company in the Portland, Oregon area. We prepare, host, and look after comfortable, stylish stays for vacations, business trips, and weekend getaways.",
+    "Belle Stays is a short-term, midterm and long term accommodation and hosting company in the Portland, Oregon area. We prepare, host, and look after comfortable, stylish stays for vacations, business trips, and weekend getaways.",
   email: "info@bellestays.net",
   officeAddress,
   officeMapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(officeAddress.join(", "))}`,
@@ -251,7 +251,7 @@ export const strip = [
 
 export const footer = {
   about:
-    "Belle Stays is a short-term accommodation and hosting company in the Portland, Oregon area. We prepare, host, and look after comfortable, stylish stays for vacations, business trips, and weekend getaways.",
+    "Belle Stays is a short-term, midterm and long term accommodation and hosting company in the Portland, Oregon area. We prepare, host, and look after comfortable, stylish stays for vacations, business trips, and weekend getaways.",
   menu: [
     { label: "Home", href: "#home" },
     { label: "Stays", href: "#stays" },

@@ -31,11 +31,11 @@ export function Intro() {
 
       <div className="relative flex min-h-[480px] items-end justify-end p-5 lg:min-h-[760px] lg:px-[70px] lg:pb-16">
         <Image
-          src="/images/intro/building.jpg"
-          alt="A Belle Stays building at dusk"
+          src="/images/intro/house.jpg"
+          alt="A grey two-storey Belle Stays family home with a front porch and garden"
           fill
           sizes="(min-width: 1024px) 740px, 100vw"
-          className="object-cover"
+          className="object-cover object-[55%_40%]"
         />
         {/* Host card */}
         <div className="relative flex gap-4 border border-white/10 bg-black/20 p-4 backdrop-blur-[20px]">
